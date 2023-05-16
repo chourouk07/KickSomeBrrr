@@ -19,8 +19,8 @@ public class Fruit : MonoBehaviour
             if ((isCollided) && playerInventory.isFull== 0 )//&& Input.GetKeyDown(KeyCode.E) )
             {
                  playerInventory.FruitCollected(gameObject);
-                 gameObject.SetActive(false);
                  isCollided= false;
+                 gameObject.SetActive(false);
                 
             }
     }

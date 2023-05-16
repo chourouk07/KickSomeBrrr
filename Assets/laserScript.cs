@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class laserScript : MonoBehaviour
 {
+    int health;
+    public Movement playerScript;
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -15,5 +17,13 @@ public class laserScript : MonoBehaviour
             Debug.Log("Game Over");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        /*
+        if (other.CompareTag("HitPoint"))
+        {
+            health = playerScript.lifePoints;
+            health--;
+            playerScript.LifePoints(health);
+        }
+        */
     }
 }
