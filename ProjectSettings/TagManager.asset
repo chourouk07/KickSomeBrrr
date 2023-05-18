@@ -24,6 +24,7 @@ TagManager:
   - Enemy
   - HitPoint
   - NextSection
+  - Answer
   layers:
   - Default
   - TransparentFX
