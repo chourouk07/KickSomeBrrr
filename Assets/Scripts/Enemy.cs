@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;   
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -25,7 +23,7 @@ public class Enemy : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.position) < detectionDistance)
         {
-            agent.SetDestination(new Vector3(player.position.x+1, player.position.y, player.position.z ));
+            agent.SetDestination(new Vector3(player.position.x + 1, player.position.y, player.position.z));
             StartCoroutine(EvilEyes());
         }
         else
@@ -37,7 +35,7 @@ public class Enemy : MonoBehaviour
             objectRenderer.materials = materials;
         }
     }
- 
+
 
     private void OnTriggerEnter(Collider other)
     {

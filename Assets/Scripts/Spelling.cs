@@ -5,6 +5,7 @@ using TMPro;
 using System.Text;
 using Newtonsoft.Json.Linq;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 //using System;
 
 public class Spelling : MonoBehaviour
@@ -119,6 +120,7 @@ public class Spelling : MonoBehaviour
             {
                 Debug.Log("You guessed the whole word!");
                 guessedWords++;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 Debug.Log("OPEN DOOR");
                 OpenDoor();
 

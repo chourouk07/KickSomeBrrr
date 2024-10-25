@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -165,6 +165,10 @@ public class Movement : MonoBehaviour
     {
         lifePoints = lifePt;
         lifeText.SetText("X" + lifePoints.ToString());
+        if(lifePoints <= 0)
+        {
+            ReloadScene();
+        }
     }
 
     IEnumerator SetFalseHit(float waitTime)
@@ -184,6 +188,11 @@ public class Movement : MonoBehaviour
         isAttacking = false;
     }
 
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     //OntriggerEnter 
     //if player collides with spikes -Life points 
 

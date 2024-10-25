@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -19,7 +17,7 @@ public class GameManager : MonoBehaviour
     public static float currentScore;
     public float levelScore;
     public Text ScoreText;
-    [SerializeField] public static int addedScore=1;
+    [SerializeField] public static int addedScore = 1;
 
 
     // Start is called before the first frame update
@@ -44,20 +42,20 @@ public class GameManager : MonoBehaviour
         //show UI
         float minutes = Mathf.Floor(timeLeft / 60);
         float seconds = Mathf.Floor(timeLeft % 60);
-        timeLeftText.text= "Time : " + minutes+":"+seconds;
-        if(seconds<10)
+        timeLeftText.text = "Time : " + minutes + ":" + seconds;
+        if (seconds < 10)
         {
             timeLeftText.text = "Time : " + minutes + ":0" + seconds;
         }
     }
     public void DisplayScore()
-    {        
-        ScoreText.text = "Score : " + currentScore +"/"+levelScore;
+    {
+        ScoreText.text = "Score : " + currentScore + "/" + levelScore;
     }
 
     public void CoolDownTimer()
     {
-        if(timeLeft > 0)
+        if (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
         }
@@ -70,21 +68,21 @@ public class GameManager : MonoBehaviour
 
     public void CheckScore()
     {
-        if(timeLeft<0 && currentScore< 20)
+        if (timeLeft < 0 && currentScore < 20)
         {
             // lose and reset level
             Debug.Log("You Lose!");
             //rest scene
-            Invoke("ReloadScene", 3);
+            Invoke("ReloadScene", 1);
         }
-        else if(currentScore>=20)
+        else if (currentScore >= 20)
         {
             //win and move to next scene
             Debug.Log("You Win!");
             //trigger lab animation
             //load next scene
-            Invoke("NextScene", 5);
-            
+            Invoke("NextScene", 3);
+
         }
     }
 

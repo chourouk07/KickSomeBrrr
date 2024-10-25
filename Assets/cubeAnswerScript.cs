@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +5,17 @@ public class cubeAnswerScript : MonoBehaviour
 {
     public float moveSpeed = 5f; // The speed at which the character moves
     public int number;
+    public Text text;
     public DrBrainsBossScript drBrainsBossScript;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        number = int.Parse(gameObject.GetComponent<Text>().text);
+        //find drbrainscript refrence
+        drBrainsBossScript = GameObject.Find("DrBrains").GetComponent<DrBrainsBossScript>();
+        //number = int.Parse(gameObject.GetComponent<Text>().text);
+        number = int.Parse(text.text);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -30,9 +33,22 @@ public class cubeAnswerScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+            Debug.Log("box hit player");
             //spawn particle effect
             //check for hit;
             drBrainsBossScript.Hit(number);
+
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+            //spawn particle effect
+            //check for hit;
+            drBrainsBossScript.Hit(number);
+            Debug.Log(number);
 
         }
     }

@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class AgentController : MonoBehaviour
@@ -19,12 +17,12 @@ public class AgentController : MonoBehaviour
     public float chaseSpeed = 10f; //determines how fast the agent moves when chasing the player.
     [SerializeField] private Movement playerScript;
     int lp;
-   // public bool attackply = false ;
+    // public bool attackply = false ;
 
     private Vector3 targetPosition;
     private GameObject player;
     private float distance = 2.0f;
-    [SerializeField] float attackDistance = 2.0f; 
+    [SerializeField] float attackDistance = 2.0f;
 
     private void Start()
     {
@@ -74,10 +72,10 @@ public class AgentController : MonoBehaviour
     }
     private void AttackPlayer()
     {
-        distance =Vector3.Distance (player.transform.position, transform.position);
-        if (distance <= attackDistance  && !playerScript.isAttacking)
+        distance = Vector3.Distance(player.transform.position, transform.position);
+        if (distance <= attackDistance && !playerScript.isAttacking)
         {
-            playerScript.isAttacked= true;
+            playerScript.isAttacked = true;
             //attack player
             GetComponent<Rigidbody>().AddForce(Vector3.up * 3.0f, ForceMode.Impulse);
             Debug.Log("Attacking");
@@ -86,16 +84,16 @@ public class AgentController : MonoBehaviour
             StartCoroutine(Explode(0.5f));
         }
     }
- /*   private void DestroyEnemy()
-    {
-        if (playerScript.isAttacking && legs.hitLeg)
-        {
-            enemyAnim.ResetTrigger("Move");
-            Death_Ani();
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-            Destroy(gameObject,1.0f);
-        }
-    }*/
+    /*   private void DestroyEnemy()
+       {
+           if (playerScript.isAttacking && legs.hitLeg)
+           {
+               enemyAnim.ResetTrigger("Move");
+               Death_Ani();
+               GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+               Destroy(gameObject,1.0f);
+           }
+       }*/
 
     //search player
     private void Wander()
@@ -144,7 +142,7 @@ public class AgentController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-         if (other.CompareTag("Leg") && playerScript.isAttacking)
+        if (other.CompareTag("Leg") && playerScript.isAttacking)
         {
             playerScript.isAttacking = false;
             enemyAnim.ResetTrigger("Move");
